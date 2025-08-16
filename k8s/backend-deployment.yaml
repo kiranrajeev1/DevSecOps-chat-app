@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: kiran700/chatapp-backend:v1.5
+        image: kiran700/chat-app-backend:v1.5
         imagePullPolicy: Always
         ports:
         - containerPort: 5001
