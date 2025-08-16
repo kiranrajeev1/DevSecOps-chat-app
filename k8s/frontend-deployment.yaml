@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: kiran698/chatapp-frontend:v1.4
+        image: kiran698/chatapp-frontend:v1.5
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
