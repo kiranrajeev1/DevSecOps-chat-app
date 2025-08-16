@@ -39,13 +39,13 @@ pipeline {
                 script{
                     dir('k8s'){
                         sh """
-                            sed -i -e s/chatapp-backend.*/chatapp-backend:${params.BACKEND_DOCKER_TAG}/g backend-deployment.yaml
+                            sed -i -e s/chat-app-backend.*/chat-app-backend:${params.BACKEND_DOCKER_TAG}/g backend-deployment.yaml
                         """
                     }
                     
                     dir('k8s'){
                         sh """
-                            sed -i -e s/chatapp-frontend.*/chatapp-frontend:${params.FRONTEND_DOCKER_TAG}/g frontend-deployment.yaml
+                            sed -i -e s/chat-app-frontend.*/chat-app-frontend:${params.FRONTEND_DOCKER_TAG}/g frontend-deployment.yaml
 
                         """
                     }
