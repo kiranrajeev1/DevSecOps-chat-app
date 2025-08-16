@@ -69,39 +69,15 @@ pipeline {
             }
         }
         
-        stage('Exporting environment variables') {
-            parallel{
-                stage("Backend env setup"){
-                    steps {
-                        script{
-                            dir("Automations"){
-                                sh "bash updatebackendnew.sh"
-                            }
-                        }
-                    }
-                }
-                
-                stage("Frontend env setup"){
-                    steps {
-                        script{
-                            dir("Automations"){
-                                sh "bash updatefrontendnew.sh"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
         stage("Docker: Build Images"){
             steps{
                 script{
                         dir('backend'){
-                            docker_build("chat-app-backend","${params.BACKEND_DOCKER_TAG}","ourchatapp")
+                            docker_build("chat-app-backend","${params.BACKEND_DOCKER_TAG}","kiran700")
                         }
                     
                         dir('frontend'){
-                            docker_build("chat-app-frontend","${params.FRONTEND_DOCKER_TAG}","ourchatapp")
+                            docker_build("chat-app-frontend","${params.FRONTEND_DOCKER_TAG}","kiran700")
                         }
                 }
             }
@@ -110,8 +86,8 @@ pipeline {
         stage("Docker: Push to DockerHub"){
             steps{
                 script{
-                    docker_push("chat-app-backend","${params.BACKEND_DOCKER_TAG}","ourchatapp") 
-                    docker_push("chat-app-frontend","${params.FRONTEND_DOCKER_TAG}","ourchatapp")
+                    docker_push("kiran700/chat-app-backend","${params.BACKEND_DOCKER_TAG}","kiran700") 
+                    docker_push("kiran700/chat-app-frontend","${params.FRONTEND_DOCKER_TAG}","kiran700")
                 }
             }
         }
@@ -119,7 +95,7 @@ pipeline {
     post{
         success{
             archiveArtifacts artifacts: '*.xml', followSymlinks: false
-            build job: "Wanderlust-CD", parameters: [
+            build job: "Chat-APP-CD", parameters: [
                 string(name: 'FRONTEND_DOCKER_TAG', value: "${params.FRONTEND_DOCKER_TAG}"),
                 string(name: 'BACKEND_DOCKER_TAG', value: "${params.BACKEND_DOCKER_TAG}")
             ]
