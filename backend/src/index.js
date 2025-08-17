@@ -22,9 +22,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.NODE_ENV === "production" 
-      ? ["http://localhost:8080", "http://localhost"] 
-      : "http://localhost:5173",
+    origin: process.env.NODE_ENV === "production"  // IF in production...
+      ? "http://chat.your-domain.com"               // THEN allow this origin
+      : "http://localhost:5173",                    // ELSE (in development) allow this one
     credentials: true,
   })
 );
