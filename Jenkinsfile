@@ -2,6 +2,11 @@
 pipeline {
     agent any
     
+    tools {
+        // This tells the pipeline to use the tool you just configured
+        nodejs 'NodeJS-18' 
+    }
+    
     environment{
         SONAR_HOME = tool "Sonar"
     }
