@@ -12,7 +12,6 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
 spec:
   rules:
-  - host: chat.your-domain.com # <-- Replace with your public domain
     http:
       paths:
       - path: /
