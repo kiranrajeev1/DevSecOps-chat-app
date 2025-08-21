@@ -1,6 +1,6 @@
 # Chatty - Real Time Chat Application
 ## DevSecOps
-### K8s | AWS EKS | Jenkins | Docker | OWASP | Trivy | SonarQube | Helm | Prometheus | Grafana | ArgoCD
+### Kubernetes | AWS EKS | Jenkins | Docker | OWASP | Trivy | SonarQube | Helm | Prometheus | Grafana | ArgoCD
 
 ## Project Overview
 
